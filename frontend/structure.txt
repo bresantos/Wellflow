@@ -1,0 +1,48 @@
+Wellflow/frontend
+
+index.html
+package.json
+package-lock.json
+vite.config.js
+.gitignore
+eslint.config.js
+
+public/
+  logo-wellflow.svg
+  logo-wellflowB.svg
+  logo-wellflowBig.svg
+  logo-wellflow-branco.svg
+  lucas.jpg
+  brenda.jpg
+
+src/
+  App.jsx
+  App.css
+  index.css
+  main.jsx
+  services/
+    api.js
+  context/
+    AuthProvider.jsx
+  routes/
+    ProtectedRoute.jsx
+  layouts/
+    GestorLayout.jsx
+    FuncionarioLayout.jsx
+  pages/
+    Login.jsx
+    DashboardGestor.jsx
+    DashboardFuncionario.jsx
+    FormularioSemanal.jsx
+    AmbienteTrabalho.jsx
+    DicasBemEstar.jsx
+  components/
+    Footer.jsx
+    HeaderGestor.jsx
+    HeaderFuncionario.jsx
+    ui/
+      sonner.jsx
+
+Notes:
+- This listing reflects the files present under the `frontend` folder in the workspace at the time of generation.
+- If you want a recursive `tree`-style output including hidden files or a different root, tell me and I can regenerate.
