@@ -6,6 +6,12 @@ WellFlow é uma plataforma web que coloca saúde mental e bem-estar no centro da
 
 ---
 
+## Link Deploy | Vercel
+
+[https://github.com/bresantos/Wellflow](https://wellflow-six.vercel.app/)
+
+---
+
 ## 🎯 O Problema
 
 O estresse corporativo é invisível até explodir. Funcionários sofrem em silêncio sem ferramentas para comunicar seu estado mental. Gestores operam no escuro sem dados para identificar problemas antes que virem desligamentos.
