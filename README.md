@@ -8,7 +8,7 @@ WellFlow é uma plataforma web que coloca saúde mental e bem-estar no centro da
 
 ## Link Deploy | Vercel
 
-[https://github.com/bresantos/Wellflow](https://wellflow-six.vercel.app/)
+[wellflow-six.vercel.app](https://wellflow-six.vercel.app/)
 
 ---
 
