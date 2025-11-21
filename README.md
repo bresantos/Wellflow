@@ -272,7 +272,7 @@ Info:         #3B82F6 (Azul)
 Desenvolvido por:
 - **Brenda Santos**
 - **Lucas Santana**
-- **Gustavo**
+- **Gustavo Cavalcanti**
 
 ---
 
