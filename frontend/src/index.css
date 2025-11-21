@@ -1,68 +1,188 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* ==========================================
+   INDEX.CSS - RESET E CONFIGURAÇÕES GLOBAIS
+   ========================================== */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Importar fonte do Google Fonts (adicione isso no seu HTML também) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* ---------------------------
+   RESET E FONTES DO SISTEMA
+----------------------------*/
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background/text definidos por variáveis de design */
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* ---------------------------
+   TOKENS DE DESIGN GLOBAL (CSS variables)
+----------------------------*/
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+
+  --primary: 258 85% 58%;
+  --primary-foreground: 0 0% 98%;
+
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+
+  --ring: 0 0% 3.9%;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+
+  --ring: 0 0% 83.1%;
+}
+
+/* ---------------------------
+   APLICAÇÃO GLOBAL (sem Tailwind)
+----------------------------*/
+* {
+  box-sizing: border-box;
+}
+
+/* Use as variáveis definidas para cor de fundo e texto (integradas ao body acima) */
+
+/* Acessibilidade - Focus visível */
+*:focus-visible {
+  outline: 2px solid #6A4CC3;
+  outline-offset: 2px;
+}
+
+/* Imagens responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevenção de zoom em inputs no iOS */
+@media screen and (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Animações de loading skeleton (para futuro uso) */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 0px, #f8f8f8 40px, #f0f0f0 80px);
+  background-size: 200px;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+/* Utilitário para esconder visualmente mas manter acessível */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Container de aplicação */
+.app-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Transições suaves para dark mode (preparação futura) */
+body,
+.card,
+.sidebar,
+.main-content {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
+/* Print styles */
+@media print {
+  .sidebar,
+  .btn,
   button {
-    background-color: #f9f9f9;
+    display: none !important;
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #E5E7EB;
+    page-break-inside: avoid;
   }
 }

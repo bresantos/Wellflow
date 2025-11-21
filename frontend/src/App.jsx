@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Toaster } from 'sonner';
+import './styles/global.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Routes
+import PrivateRoute from './routes/PrivateRoute';
+import routes from './routes/config.jsx';
+
+// Components
+import Placeholder from './components/Placeholder';
+
+function wrapRoute(route) {
+  const element = route.private ? (
+    <PrivateRoute role={route.role}>{route.element}</PrivateRoute>
+  ) : (
+    route.element
+  );
+
+  if (!route.children) {
+    return <Route path={route.path} element={element} key={route.path} />;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Route path={route.path} element={element} key={route.path}>
+      {route.children.map((child) => (
+        <Route
+          key={`${route.path}-${child.path ?? 'index'}`}
+          path={child.path}
+          index={child.index}
+          element={child.element}
+        />
+      ))}
+    </Route>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Toaster position="top-center" richColors />
+      <Routes>
+        {routes.map((route) => wrapRoute(route))}
+        <Route
+          path="*"
+          element={
+            <div className="center-screen">
+              <Placeholder
+                title="404 — Página não encontrada"
+                description="Siga para o login e tente novamente."
+              />
+              <Link to="/login" className="btn-link mt-lg">
+                Voltar para Login
+              </Link>
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
