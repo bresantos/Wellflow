@@ -261,7 +261,7 @@ Info:         #3B82F6 (Azul)
 
 ## 👥 Autores
 
-**Projeto Acadêmico FIAP - GS (Global Solution) 2024**
+**Projeto Acadêmico FIAP - GS (Global Solution) 2025**
 
 Desenvolvido por:
 - **Brenda Santos**
