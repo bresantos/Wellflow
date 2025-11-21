@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import HeaderGestor from '../components/Header/HeaderGestor';
 import Footer from '../components/Footer/Footer';
-import Sidebar from '../components/Layout/Sidebar';
+import Sidebar from '../components/layout/Sidebar';
 
 export default function GestorLayout() {
     return (
