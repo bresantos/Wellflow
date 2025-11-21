@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import HeaderFuncionario from '../components/Header/HeaderFuncionario';
 import Footer from '../components/Footer/Footer';
-import Sidebar from '../components/Layout/Sidebar';
+import Sidebar from '../components/layout/Sidebar';
 
 export default function FuncionarioLayout() {
     return (
