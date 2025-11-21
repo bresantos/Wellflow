@@ -70,11 +70,11 @@ export default function DicasBemEstar() {
             </div>
 
             {/* Seção de Alimentação */}
-                <div className="card mb-xl">
-                <div className="card-header">
+                <div className="tip-card mb-xl">
+                <div className="tip-header">
                     <div className="tip-icon tip-icon--purple tip-icon--large">🥗</div>
                     <div>
-                        <h3 className="card-title card-title--primary">
+                        <h3 className="tip-title">
                             Alimentação Saudável
                         </h3>
                         <p className="card-subtitle">Dicas nutricionais para o dia a dia</p>
@@ -103,11 +103,11 @@ export default function DicasBemEstar() {
             </div>
 
             {/* Seção de Exercícios */}
-                <div className="card mb-xl">
-                <div className="card-header">
+                <div className="tip-card mb-xl">
+                <div className="tip-header">
                     <div className="tip-icon tip-icon--green tip-icon--large">🏃</div>
                     <div>
-                        <h3 className="card-title card-title--primary">Atividade Física</h3>
+                        <h3 className="tip-title">Atividade Física</h3>
                         <p className="card-subtitle">Movimente-se para uma vida mais saudável</p>
                     </div>
                 </div>
@@ -131,11 +131,11 @@ export default function DicasBemEstar() {
             </div>
 
             {/* Seção de Saúde Mental */}
-                <div className="card mb-xl">
-                <div className="card-header">
+                <div className="tip-card mb-xl">
+                <div className="tip-header">
                     <div className="tip-icon tip-icon--pink tip-icon--large">🧠</div>
                     <div>
-                        <h3 className="card-title card-title--primary">Saúde Mental</h3>
+                        <h3 className="tip-title">Saúde Mental</h3>
                         <p className="card-subtitle">Cuide da sua mente com carinho</p>
                     </div>
                 </div>

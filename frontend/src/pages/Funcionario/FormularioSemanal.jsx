@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 export default function FormularioSemanal() {
     const [respostas, setRespostas] = useState({
@@ -20,8 +21,7 @@ export default function FormularioSemanal() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Formulário enviado:', respostas);
-        alert('Formulário enviado com sucesso! Obrigado por compartilhar seu feedback.');
+        toast.success('Formulário enviado com sucesso! Obrigado por compartilhar seu feedback.');
         // Aqui você pode adicionar a lógica para salvar os dados
     };
 
@@ -40,12 +40,13 @@ export default function FormularioSemanal() {
                             <h3 className="form-category-title">Questões Pessoais</h3>
                             
                             <div className="form-group">
-                                <label className="form-question">
+                                <label className="form-question" htmlFor="estresse-pessoal">
                                     Como você avalia seu nível de estresse pessoal esta semana?
                                 </label>
                                 <div className="slider-container">
                                     <span className="slider-value">{respostas.estressePessoal}</span>
                                     <input
+                                        id="estresse-pessoal"
                                         type="range"
                                         min="1"
                                         max="5"
@@ -58,12 +59,13 @@ export default function FormularioSemanal() {
                             </div>
 
                             <div className="form-group">
-                                <label className="form-question">
+                                <label className="form-question" htmlFor="qualidade-sono">
                                     Como está sua qualidade de sono?
                                 </label>
                                 <div className="slider-container">
                                     <span className="slider-value">{respostas.qualidadeSono}</span>
                                     <input
+                                        id="qualidade-sono"
                                         type="range"
                                         min="1"
                                         max="5"
@@ -76,12 +78,13 @@ export default function FormularioSemanal() {
                             </div>
 
                             <div className="form-group">
-                                <label className="form-question">
+                                <label className="form-question" htmlFor="equilibrio-vida">
                                     Como está seu equilíbrio entre vida pessoal e trabalho?
                                 </label>
                                 <div className="slider-container">
                                     <span className="slider-value">{respostas.equilibrioVida}</span>
                                     <input
+                                        id="equilibrio-vida"
                                         type="range"
                                         min="1"
                                         max="5"
@@ -99,12 +102,13 @@ export default function FormularioSemanal() {
                             <h3 className="form-category-title">Questões Profissionais</h3>
                             
                             <div className="form-group">
-                                <label className="form-question">
+                                <label className="form-question" htmlFor="carga-trabalho">
                                     Como você avalia sua carga de trabalho?
                                 </label>
                                 <div className="slider-container">
                                     <span className="slider-value">{respostas.cargaTrabalho}</span>
                                     <input
+                                        id="carga-trabalho"
                                         type="range"
                                         min="1"
                                         max="5"
@@ -117,12 +121,13 @@ export default function FormularioSemanal() {
                             </div>
 
                             <div className="form-group">
-                                <label className="form-question">
+                                <label className="form-question" htmlFor="relacao-colegas">
                                     Como está sua relação com os colegas?
                                 </label>
                                 <div className="slider-container">
                                     <span className="slider-value">{respostas.relacaoColegas}</span>
                                     <input
+                                        id="relacao-colegas"
                                         type="range"
                                         min="1"
                                         max="5"
@@ -135,12 +140,13 @@ export default function FormularioSemanal() {
                             </div>
 
                             <div className="form-group">
-                                <label className="form-question">
+                                <label className="form-question" htmlFor="relacao-gestor">
                                     Como você se sente em relação ao seu gestor?
                                 </label>
                                 <div className="slider-container">
                                     <span className="slider-value">{respostas.relacaoGestor}</span>
                                     <input
+                                        id="relacao-gestor"
                                         type="range"
                                         min="1"
                                         max="5"
@@ -153,12 +159,13 @@ export default function FormularioSemanal() {
                             </div>
 
                             <div className="form-group">
-                                <label className="form-question">
+                                <label className="form-question" htmlFor="satisfacao-ambiente">
                                     Qual seu nível de satisfação com o ambiente de trabalho?
                                 </label>
                                 <div className="slider-container">
                                     <span className="slider-value">{respostas.satisfacaoAmbiente}</span>
                                     <input
+                                        id="satisfacao-ambiente"
                                         type="range"
                                         min="1"
                                         max="5"

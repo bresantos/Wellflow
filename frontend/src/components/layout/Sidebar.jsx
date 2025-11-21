@@ -1,48 +1,57 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthProvider';
+import { getDisplayName } from '../../utils/auth';
+import { NAV_LINKS } from '../../routes/navigation';
+import PropTypes from 'prop-types';
+import { IconHome, IconListCheck, IconWind, IconBulb, IconHistory, IconClipboardText, IconSettingsCheck } from '@tabler/icons-react';
 
 export default function Sidebar({ role = 'funcionario' }) {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
-  const gestorLinks = [
-    { to: '/gestor', label: 'Dashboard' },
-    { to: '/gestor/relatorios', label: 'Relatórios' },
-    { to: '/gestor/ambiente', label: 'Ambiente' },
-    { to: '/gestor/configuracoes', label: 'Configurações' },
-  ];
+  const handleLogout = () => {
+    logout();
+    navigate('/login', { replace: true });
+  };
 
-  const funcionarioLinks = [
-    { to: '/funcionario', label: 'Início' },
-    { to: '/funcionario/formulario', label: 'Formulário Semanal' },
-    { to: '/funcionario/ambiente', label: 'Ambiente' },
-    { to: '/funcionario/dicas', label: 'Dicas' },
-    { to: '/funcionario/historico', label: 'Histórico' },
-  ];
+  const getIcon = (to) => {
+    if (to.includes('/funcionario')) {
+      if (to.endsWith('/formulario')) return <IconListCheck stroke={2} />;
+      if (to.endsWith('/ambiente')) return <IconWind stroke={2} />;
+      if (to.endsWith('/dicas')) return <IconBulb stroke={2} />;
+      if (to.endsWith('/historico')) return <IconHistory stroke={2} />;
+      return <IconHome stroke={2} />; // Início
+    }
+    if (to.includes('/gestor')) {
+      if (to.endsWith('/relatorios')) return <IconClipboardText stroke={2} />;
+      if (to.endsWith('/ambiente')) return <IconWind stroke={2} />;
+      if (to.endsWith('/configuracoes')) return <IconSettingsCheck stroke={2} />;
+      return <IconHome stroke={2} />; // Dashboard
+    }
+    return <span aria-hidden>▢</span>;
+  };
 
-  const links = role === 'gestor' ? gestorLinks : funcionarioLinks;
+  const links = NAV_LINKS[role] ?? [];
+  const fallbackName = role === 'gestor' ? 'Gestor' : 'Funcionário';
+  const displayName = user ? getDisplayName(user) : fallbackName;
 
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="sidebar-logo">
-          <div className="sidebar-logo-placeholder" aria-hidden>
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <rect width="40" height="40" rx="8" fill="white" fillOpacity="0.2"/>
-              <path d="M20 10L25 20H15L20 10Z" fill="white"/>
-              <circle cx="20" cy="25" r="5" fill="white"/>
-            </svg>
-          </div>
+          <img src="/logo-wellflow-branco-transparente.png" alt="WellFlow Logo" className="sidebar-logo-img" />
         </div>
-        <h2 className="sidebar-title">WellFlow</h2>
         <p className="sidebar-subtitle">{role === 'gestor' ? 'Gestão de Bem-estar' : 'Monitoramento de Bem-estar'}</p>
       </div>
 
-      <nav>
+      <nav aria-label="Menu principal">
         <ul className="sidebar-nav">
           {links.map((item) => (
             <li key={item.to} className="sidebar-nav-item">
               <Link to={item.to} className="sidebar-nav-link">
-                <span className="sidebar-nav-icon" aria-hidden>▢</span>
+                <span className="sidebar-nav-icon" aria-hidden>
+                  {getIcon(item.to)}
+                </span>
                 {item.label}
               </Link>
             </li>
@@ -53,10 +62,14 @@ export default function Sidebar({ role = 'funcionario' }) {
       <div className="sidebar-footer">
         <div className="user-info">
           <p className="user-label">Logado como</p>
-          <p className="user-name">{user?.username || (role === 'gestor' ? 'Gestor' : 'Funcionário')}</p>
+          <p className="user-name">{displayName}</p>
         </div>
-        <button onClick={logout} className="btn-logout">Sair</button>
+        <button onClick={handleLogout} className="btn-logout">Sair</button>
       </div>
     </aside>
   );
 }
+
+Sidebar.propTypes = {
+  role: PropTypes.oneOf(['gestor', 'funcionario'])
+};

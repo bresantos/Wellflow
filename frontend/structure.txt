@@ -17,9 +17,12 @@ public/
 
 src/
   App.jsx
-  App.css
   index.css
   main.jsx
+  styles/
+    global.css
+    pages/
+  assets/
   services/
     api.js
   context/
@@ -30,18 +33,34 @@ src/
     GestorLayout.jsx
     FuncionarioLayout.jsx
   pages/
-    Login.jsx
-    DashboardGestor.jsx
-    DashboardFuncionario.jsx
-    FormularioSemanal.jsx
-    AmbienteTrabalho.jsx
-    DicasBemEstar.jsx
+    Login/
+      Login.jsx
+    Gestor/
+      DashboardGestor.jsx
+    Funcionario/
+      DashboardFuncionario.jsx
+      FormularioSemanal.jsx
+      DicasBemEstar.jsx
+    Public/
+      AmbienteTrabalho.jsx
   components/
-    Footer.jsx
-    HeaderGestor.jsx
-    HeaderFuncionario.jsx
+    Header/
+      HeaderCommon.jsx
+      HeaderFuncionario.jsx
+      HeaderGestor.jsx
+    Footer/
+      Footer.jsx
+    Navbar/
+      README.md
+    Layout/
+      Sidebar.jsx
     ui/
       sonner.jsx
+      NotificationDropdown.jsx
+  hooks/
+    README.md
+    utils/
+      auth.js
 
 Notes:
 - This listing reflects the files present under the `frontend` folder in the workspace at the time of generation.

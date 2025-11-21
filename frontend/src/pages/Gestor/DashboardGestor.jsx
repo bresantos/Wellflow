@@ -1,72 +1,70 @@
-import { useAuth } from '../context/AuthProvider';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 
 export default function DashboardGestor() {
-    const { user } = useAuth();
 
     // Dados mock dos funcionários
     const funcionarios = [
         {
             id: 1,
-            nome: "Ana Cal_1",
-            avatar: "https://i.pravatar.cc/150?img=1",
+            nome: "Ana Carolina",
+            avatar: "/mulher1.jpg",
             cargo: "Caixa",
             estressePessoal: 2,
             estresseProfissional: 3
         },
         {
             id: 2,
-            nome: "Beatriz Cal_2",
-            avatar: "https://i.pravatar.cc/150?img=5",
+            nome: "Beatriz Almeida",
+            avatar: "/mulher2.jpg",
             cargo: "Caixa",
             estressePessoal: 4,
             estresseProfissional: 5
         },
         {
             id: 3,
-            nome: "Carlos Cha_1",
-            avatar: "https://i.pravatar.cc/150?img=12",
+            nome: "Carlos Macedo",
+            avatar: "/homem1.jpg",
             cargo: "Chapa",
             estressePessoal: 5,
             estresseProfissional: 5
         },
         {
             id: 4,
-            nome: "Fernanda Cha_2",
-            avatar: "https://i.pravatar.cc/150?img=9",
+            nome: "Fernanda Costa",
+            avatar: "/mulher3.jpg",
             cargo: "Chapa",
             estressePessoal: 3,
             estresseProfissional: 2
         },
         {
             id: 5,
-            nome: "Fernanda Cha_3",
-            avatar: "https://i.pravatar.cc/150?img=10",
+            nome: "Juliana Pereira",
+            avatar: "/mulher4.jpg",
             cargo: "Chapa",
             estressePessoal: 3,
             estresseProfissional: 3
         },
         {
             id: 6,
-            nome: "Juliana Mon_1",
-            avatar: "https://i.pravatar.cc/150?img=24",
+            nome: "Maria Santos",
+            avatar: "/mulher5.jpg",
             cargo: "Montagem de pedidos",
             estressePessoal: 2,
             estresseProfissional: 1
         },
         {
             id: 7,
-            nome: "Ana Mon_2",
-            avatar: "https://i.pravatar.cc/150?img=27",
+            nome: "Lucas Oliveira",
+            avatar: "/homem2.jpg",
             cargo: "Montagem de pedidos",
             estressePessoal: 3,
             estresseProfissional: 3
         },
         {
             id: 8,
-            nome: "Lucas Sob_1",
-            avatar: "https://i.pravatar.cc/150?img=33",
+            nome: "Rafael Souza",
+            avatar: "/homem3.jpg",
             cargo: "Sobremesa",
             estressePessoal: 1,
             estresseProfissional: 1

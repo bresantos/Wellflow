@@ -1,13 +1,15 @@
-import { useAuth } from '../context/AuthProvider';
+import { useAuth } from '../../context/AuthProvider';
 import HeaderCommon from './HeaderCommon';
+import { getDisplayName } from '../../utils/auth';
+import { NAV_LINKS } from '../../routes/navigation';
 
 export default function HeaderGestor() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const dadosGestor = {
-    nome: user?.username || 'Marcos Silva',
+    nome: getDisplayName(user) || 'Marcos Silva',
     cargo: 'Gestor Operacional',
-    avatar: 'https://i.pravatar.cc/150?img=12'
+    avatar: '/gestora.jpg'
   };
 
   const funcionarios = [
@@ -56,6 +58,8 @@ export default function HeaderGestor() {
       avatar={dadosGestor.avatar}
       metrics={metrics}
       notifications={notifications}
+      navLinks={NAV_LINKS.gestor}
+      onLogout={logout}
     />
   );
 }

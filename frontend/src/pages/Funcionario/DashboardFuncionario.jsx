@@ -1,8 +1,6 @@
-import { useAuth } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
 
 export default function DashboardFuncionario() {
-    const { user } = useAuth();
 
     return (
         <div className="fade-in">
@@ -113,33 +111,29 @@ export default function DashboardFuncionario() {
             {/* Equipe de Suporte (Mock) */}
             <div className="card mt-xl">
                 <div className="card-header">
-                    <h3 className="card-title">Equipe de Suporte</h3>
-                    <p className="card-subtitle">Entre em contato se precisar de ajuda</p>
+                    <div style={{ textAlign: 'center', width: '100%' }}>
+                        <h3 className="card-title" style={{ margin: '0 0 8px 0' }}>Equipe de Suporte</h3>
+                        <p className="card-subtitle" style={{ margin: 0 }}>Entre em contato se precisar de ajuda</p>
+                    </div>
                 </div>
                 <div className="grid grid-3">
                     <div className="center-block">
                         <img src="https://i.pravatar.cc/150?img=68" alt="João Silva" className="employee-avatar employee-avatar--sm" />
                         <div className="employee-name employee-name--sm">João Silva</div>
                         <div className="employee-role employee-role--sm">RH</div>
-                        <div className="muted-small notif-icons">🔔 🔔</div>
                     </div>
                     <div className="center-block">
                         <img src="https://i.pravatar.cc/150?img=20" alt="Maria Santos" className="employee-avatar employee-avatar--sm" />
                         <div className="employee-name employee-name--sm">Maria Santos</div>
                         <div className="employee-role employee-role--sm">Psicóloga</div>
-                        <div className="muted-small notif-icons">🔔 🔔</div>
                     </div>
                     <div className="center-block">
                         <img src="https://i.pravatar.cc/150?img=15" alt="Pedro Costa" className="employee-avatar employee-avatar--sm" />
                         <div className="employee-name employee-name--sm">Pedro Costa</div>
                         <div className="employee-role employee-role--sm">Gestor</div>
-                        <div className="muted-small notif-icons">🔔 🔔</div>
                     </div>
                 </div>
             </div>
-
-            {/* Footer Info */}
-            <div className="footer-note">Desenvolvido por Equipe WellFlow 2025</div>
         </div>
     );
 }

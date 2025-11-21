@@ -1,13 +1,15 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { findUserByCredentials } from "../utils/auth";
 
+const STORAGE_KEY = 'wf_user';
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(() => {
         try {
-            const raw = localStorage.getItem('wf_user');
+            const raw = localStorage.getItem(STORAGE_KEY);
             return raw ? JSON.parse(raw) : null;
-        } catch (e) {
+        } catch (error) {
             return null;
         }
     });
@@ -15,50 +17,38 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         try {
             if (user) {
-                localStorage.setItem('wf_user', JSON.stringify(user));
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
             } else {
-                localStorage.removeItem('wf_user');
+                localStorage.removeItem(STORAGE_KEY);
             }
-        } catch (e) {
-            // ignore storage errors
+        } catch (_error) {
+            // ignore storage failures silently
         }
     }, [user]);
 
-    const login = (username, password) => {
-        // Base de usuários de teste
-        const users = [
-            {
-                username: "gestor",
-                password: "admin",
-                role: "gestor"
-            },
-            {
-                username: "funcionario",
-                password: "admin",
-                role: "funcionario"
-            }
-        ];
-
-        const foundUser = users.find(
-            (u) => u.username === username && u.password === password
-        );
-
-        if (foundUser) {
-            // avoid storing password in localStorage
-            const safeUser = { username: foundUser.username, role: foundUser.role };
-            setUser(safeUser);
-            return safeUser;
-        }
-
-        return null;
+    const login = (email, senha) => {
+        // login
+        const foundUser = findUserByCredentials(email, senha);
+        if (!foundUser) return null;
+        const safeUser = {
+            id: foundUser.id,
+            email: foundUser.email,
+            role: foundUser.role,
+            displayName: foundUser.displayName
+        };
+        setUser(safeUser);
+        return safeUser;
     };
 
-    const logout = () => {
+    const logout = useCallback(() => {
         setUser(null);
-    };
+    }, []);
+
+    const getUser = () => user;
+    const isAuthenticated = () => Boolean(user);
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, getUser, isAuthenticated }}>
             {children}
         </AuthContext.Provider>
     );

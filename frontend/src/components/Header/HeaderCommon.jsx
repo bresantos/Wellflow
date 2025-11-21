@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { IconBell } from '@tabler/icons-react';
-import NotificationDropdown from './NotificationDropdown';
+import NotificationDropdown from '../ui/NotificationDropdown';
+import MobileMenu from '../MobileMenu';
 import PropTypes from 'prop-types';
 
-export default function HeaderCommon({ nome, cargo, avatar, metrics = null, notifications = [] }) {
+export default function HeaderCommon({ nome, cargo, avatar, metrics = null, notifications = [], navLinks = [], onLogout }) {
   const [notifOpen, setNotifOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const unreadCount = notifications.filter(n => !n.read).length;
 
   return (
@@ -34,8 +36,18 @@ export default function HeaderCommon({ nome, cargo, avatar, metrics = null, noti
 
             <NotificationDropdown open={notifOpen} notifications={notifications} onClose={() => setNotifOpen(false)} />
           </div>
+
+          <button
+            className="header-menu-button"
+            type="button"
+            aria-label="Abrir menu"
+            onClick={() => setIsMenuOpen(true)}
+          >
+            ☰
+          </button>
         </div>
       </div>
+      <MobileMenu open={isMenuOpen} links={navLinks} onClose={() => setIsMenuOpen(false)} onLogout={onLogout} displayName={nome} />
     </header>
   );
 }
@@ -45,5 +57,7 @@ HeaderCommon.propTypes = {
   cargo: PropTypes.string,
   avatar: PropTypes.string,
   metrics: PropTypes.node,
-  notifications: PropTypes.array
+  notifications: PropTypes.array,
+  navLinks: PropTypes.array,
+  onLogout: PropTypes.func.isRequired
 };

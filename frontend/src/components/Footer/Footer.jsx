@@ -6,23 +6,23 @@ export default function Footer() {
     {
       id: 1,
       nome: 'Brenda Santos',
-      foto: '/frontend/src/assets/brenda.jpg',
-      linkedin: 'https://www.linkedin.com/in/joaosilva',
+      foto: '/brenda.jpg',
+      linkedin: 'https://www.linkedin.com/in/brendatrsantos/',
       github: 'https://github.com/bresantos'
     },
     {
       id: 2,
       nome: 'Lucas Santana',
-      foto: '/frontend/src/assets/lucas.jpg',
-      linkedin: 'https://www.linkedin.com/in/',
+      foto: '/lucas.jpg',
+      linkedin: 'https://www.linkedin.com/in/lucas-santana',
       github: 'https://github.com/yzSant'
     },
     {
       id: 3,
       nome: 'Gustavo',
       foto: 'https://i.pravatar.cc/150?img=15',
-      linkedin: 'https://www.linkedin.com/in/',
-      github: 'https://github.com/'
+      linkedin: 'https://www.linkedin.com/in/gustavo',
+      github: 'https://github.com/gustavo'
     }
   ];
 
@@ -57,6 +57,11 @@ export default function Footer() {
             <div className="credits-year">2025</div>
           </div>
         </div>
+      </div>
+
+      {/* Logo centralizado */}
+      <div className="footer-logo-container">
+        <img src="/logo-wellflow.svg" alt="WellFlow Logo" className="footer-logo" />
       </div>
     </footer>
   );

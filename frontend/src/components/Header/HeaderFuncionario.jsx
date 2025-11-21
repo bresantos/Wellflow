@@ -1,11 +1,13 @@
-import { useAuth } from '../context/AuthProvider';
+import { useAuth } from '../../context/AuthProvider';
 import HeaderCommon from './HeaderCommon';
+import { getDisplayName } from '../../utils/auth';
+import { NAV_LINKS } from '../../routes/navigation';
 
 export default function HeaderFuncionario() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const dadosFuncionario = {
-    nome: user?.username || 'Ana Silva',
+    nome: getDisplayName(user) || 'Ana Silva',
     cargo: 'Operadora de Caixa',
     avatar: 'https://i.pravatar.cc/150?img=1',
     estresseProfissional: 2.8,
@@ -36,8 +38,10 @@ export default function HeaderFuncionario() {
       nome={dadosFuncionario.nome}
       cargo={dadosFuncionario.cargo}
       avatar={dadosFuncionario.avatar}
+      navLinks={NAV_LINKS.funcionario}
       metrics={metrics}
       notifications={notifications}
+      onLogout={logout}
     />
   );
 }
